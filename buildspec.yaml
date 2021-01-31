@@ -3,10 +3,7 @@ version: 0.2
 phases:
   install: 
     runtime-versions:
-      nodejs: 14
-    commands: 
-      - echo installing all dependencies
-      - npm install
+      docker: 18
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
