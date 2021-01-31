@@ -1,0 +1,30 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+metadata:
+  name: EKS-Demo-Cluster
+  region: us-east-1
+
+vpc:
+  id: vpc-0623be03839844682
+  cidr: "192.168.0.0/16"
+  subnets:
+    public:
+      us-east-1a:
+        id: subnet-089e8b8a4a9b1173f
+      us-east-1b:
+        id: subnet-0e2e8d3ee614309d1
+    private:
+      us-east-1a:
+        id: subnet-0b2ed7211364aa573
+      us-east-1b:
+        id: subnet-0fcf9d9081f0a221f
+
+nodeGroups:
+  - name: EKS-public-workers
+    instanceType: t2.medium
+    desiredCapacity: 2
+  - name: EKS-private-workers
+    instanceType: t2.medium
+    desiredCapacity: 1
+    privateNetworking: true
+
